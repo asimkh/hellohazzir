@@ -1,0 +1,37 @@
+{
+  "name": "hellohazzir",
+  "version": "1.0.0",
+  "description": "Simple Messenger",
+  "main": "index.js",
+  "dependencies": {
+    "body-parser": "^1.15.0",
+    "dotenv": "^2.0.0",
+    "express": "^4.13.4",
+    "ngrok": "^2.2.4",
+    "node-wit": "^3.3.2",
+    "request": "^2.72.0",
+    "uuid": "^3.0.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "dev",
+    "start": "node index.js",
+    "ngrok": "./node_modules/ngrok/bin/ngrok http 8445"
+  },
+  "engines": {
+    "node": ">=4.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/asimkh/hellohazzir.git"
+  },
+  "keywords": [
+    "wit"
+  ],
+  "author": "Hazzir",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/asimkh/hellohazzir/issues"
+  },
+  "homepage": "https://github.com/asimkh/hellohazzir#readme"
+}
