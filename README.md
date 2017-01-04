@@ -1,5 +1,7 @@
 https://www.messenger.com/t/hellohazzir/
+
 http://hellohazzir.herokuapp.com/
+
 git@github.com:asimkh/hellohazzir.git
 
 ```js
@@ -71,5 +73,8 @@ heroku git:remote -a hellohazzir
 git add .
 git commit -am "make it better"
 git push heroku master
+
+heroku local web
+heroku config:set TIMES=2
 ```
 
