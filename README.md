@@ -1,6 +1,5 @@
 https://www.messenger.com/t/hellohazzir/
-
-
+http://hellohazzir.herokuapp.com/
 git@github.com:asimkh/hellohazzir.git
 
 ```js
@@ -64,4 +63,13 @@ Links.
 http://en.stack.aiseen.org/questions/39417130/wit-ai-not-parsing-data-to-chat-response
 
 https://chatbotsmagazine.com/programming-a-bot-with-facebook-messenger-3e6a3e787f6b#.27x0zjk50
+
+Heroku
+```js
+heroku login
+heroku git:remote -a hellohazzir
+git add .
+git commit -am "make it better"
+git push heroku master
+```
 
