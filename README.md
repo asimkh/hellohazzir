@@ -31,15 +31,20 @@ e.g. https://1640e08d.ngrok.io/
 Node Wit
 
 https://github.com/wit-ai/node-wit
+
 https://github.com/thekevinscott/getting-started-with-facebook-bots/blob/master/index.js
+
 https://github.com/wit-ai/node-wit/blob/master/examples/messenger.js
 
 
 Wit Stories
+
 https://wit.ai/asimkh/DevnetBot/stories
 
 Wit Fiddel
+
 https://wit-ai.github.io/witty-fiddle/?id=5a387f6ccb4be4a1f77f2113747a558a
+
 https://wit-ai.github.io/witty-fiddle/?id=2a2aafd3e2656e7e74949331b85a6667
 
 
