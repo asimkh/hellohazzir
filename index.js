@@ -16,31 +16,16 @@ const crypto = require('crypto');
 const express = require('express');
 const fetch = require('node-fetch');
 const request = require('request');
-const app = express();
+
 
 const {Wit, log, interactive} = require('node-wit');
+
+
 const PORT = process.env.PORT || 8445;
 const WIT_TOKEN = process.env.WIT_TOKEN;
 
 
 
-app.use(bodyParser.urlencoded({
-  extended: true
-}));
-
-app.use(bodyParser.json());
-
-app.get('/', function (req, res) {
-  res.send('Bot Messenger!');
-});
-
-
-app.use(({method, url}, rsp, next) => {
-  rsp.on('finish', () => {
-    console.log(`${rsp.statusCode} ${method} ${url}`);
-  });
-  next();
-});
 
 
 // ----------------------------------------------------------------------------
@@ -101,22 +86,6 @@ const findOrCreateSession = (fbid) => {
 };
 
 
-
-// Quickstart example
-// See https://wit.ai/ar7hur/quickstart
-
-const firstEntityValue = (entities, entity) => {
-  const val = entities && entities[entity] &&
-    Array.isArray(entities[entity]) &&
-    entities[entity].length > 0 &&
-    entities[entity][0].value
-  ;
-  if (!val) {
-    return null;
-  }
-  return typeof val === 'object' ? val.value : val;
-};
-
 // Our bot actions
 const actions = {
   send({sessionId}, {text}) {
@@ -156,7 +125,31 @@ const actions = {
 
 };
 
+// Setting up our bot
+const wit = new Wit({
+  accessToken: WIT_TOKEN,
+  actions,
+  logger: new log.Logger(log.INFO)
+});
 
+
+const app = express();
+app.use(({method, url}, rsp, next) => {
+  rsp.on('finish', () => {
+    console.log(`${rsp.statusCode} ${method} ${url}`);
+  });
+  next();
+});
+
+app.use(bodyParser.urlencoded({
+  extended: true
+}));
+
+app.use(bodyParser.json());
+
+app.get('/', function (req, res) {
+  res.send('Bot Messenger!');
+});
 
 
 // Webhook setup
@@ -175,10 +168,14 @@ app.post('/webhook', (req, res) => {
   // See the Webhook reference
   // https://developers.facebook.com/docs/messenger-platform/webhook-reference
   const data = req.body;
-
+  
+  // Make sure this is a page subscription
   if (data.object === 'page') {
+
     data.entry.forEach(entry => {
+
       entry.messaging.forEach(event => {
+
         if (event.message && !event.message.is_echo) {
           // Yay! We got a new message!
           // We retrieve the Facebook user ID of the sender
@@ -232,6 +229,23 @@ app.post('/webhook', (req, res) => {
   }
   res.sendStatus(200);
 });
+
+
+
+// Quickstart example
+// See https://wit.ai/ar7hur/quickstart
+
+const firstEntityValue = (entities, entity) => {
+  const val = entities && entities[entity] &&
+    Array.isArray(entities[entity]) &&
+    entities[entity].length > 0 &&
+    entities[entity][0].value
+  ;
+  if (!val) {
+    return null;
+  }
+  return typeof val === 'object' ? val.value : val;
+};
 
 
 app.listen(PORT);
