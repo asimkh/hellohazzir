@@ -2,7 +2,6 @@ https://www.messenger.com/t/hellohazzir/
 
 http://hellohazzir.herokuapp.com/
 
-git@github.com:asimkh/hellohazzir.git
 
 ```js
 git init
@@ -50,6 +49,7 @@ https://wit-ai.github.io/witty-fiddle/?id=2a2aafd3e2656e7e74949331b85a6667
 
 
 Developer Facebook
+
 https://developers.facebook.com/apps/564444680369136/messenger/
 
 Curl Messages
