@@ -162,7 +162,7 @@ const actions = {
 // Webhook setup
 app.get('/webhook', (req, res) => {
   if (req.query['hub.mode'] === 'subscribe' &&
-    req.query['hub.verify_token'] === FB_VERIFY_TOKEN) {
+    req.query['hub.verify_token'] === FB_APP_SECRET) {
     res.send(req.query['hub.challenge']);
   } else {
     res.sendStatus(400);
